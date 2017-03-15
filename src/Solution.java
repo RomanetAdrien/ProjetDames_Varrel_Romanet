@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 import static java.lang.Math.abs;
 
@@ -18,6 +20,8 @@ public class Solution {
         for(int i=0;i<n;i++){
             list.add(i,i);
         }
+        long seed = System.nanoTime();
+        Collections.shuffle(list, new Random(seed));
         this.solution = list;
         this.n=n;
         this.calculFitness();

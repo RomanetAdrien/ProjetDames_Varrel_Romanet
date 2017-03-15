@@ -22,13 +22,13 @@ public class ProjetDames_Varrel_Romanet {
                     }
                 }
                 i++;
-            } while (i < 300 && best > 0);
+            } while (i < 100 && best > 0);
             if(best==0) {
                 System.out.println(n);
                 s.printSolution();
                 System.out.println("Itérations : " + i);
+                n++;
             }
-            n++;
         }while(n<100);
 
     }
