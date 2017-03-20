@@ -3,6 +3,8 @@ import java.util.Collections;
 import java.util.Random;
 
 import static java.lang.Math.abs;
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 
 /**
  * Created by ROMANET_VARREL on 15/03/2017.
@@ -44,19 +46,61 @@ public class Solution {
         }
     }
 
+    // Inverse la position de 2 reines
     public ArrayList<Solution> getVoisinage(){
         ArrayList<Solution> voisinage = new ArrayList<>();
-        ArrayList<Integer> permutation; int temp;
         for (int i=0;i<n;i++){
             for(int j=i+1;j<n;j++){
-                permutation = (ArrayList<Integer>) this.solution.clone();
-                temp=permutation.get(i);
-                permutation.set(i,permutation.get(j));
-                permutation.set(j,temp);
-                voisinage.add(new Solution(permutation));
+                voisinage.add(getPermuted(i, j));
             }
         }
         return voisinage;
+    }
+
+    // Inverse la position de 2 reines si elles sont proches
+    public ArrayList<Solution> getVoisinage(int distance){
+        // Si on met une distance nulle ou qui vaut la taille totale on renvoi toutes les combinaisons
+        if(distance <= 0 || distance >=n){
+            return getVoisinage();
+        }
+        ArrayList<Solution> voisinage = new ArrayList<>();
+
+        for (int i=0;i<n-1;i++){
+            for(int j=1; j<= distance;j++) {
+                if(i+j<n) {
+                    voisinage.add(getPermuted(i, i+j));
+                }
+            }
+        }
+        return voisinage;
+    }
+
+    public Solution getVoisinRandom(int distance){
+        int i, j, max, min;
+        // i aléatoire entre 0 et n-1
+        i = (int)Math.random()* n;
+        if (distance <=0 || distance >= n){
+            min = 0;
+            max = n-1;
+        }
+        else {
+            min = max(i - distance, 0);
+            max = min(i+distance, n-1);
+        }
+
+        do{
+            j= (int)( Math.random()*( max - min + 1 ) ) + min;
+        } while (j == i);
+        return getPermuted(i,j);
+    }
+
+    public Solution getPermuted(int i, int j){
+        ArrayList<Integer> permutation; int temp;
+        permutation = (ArrayList<Integer>) this.solution.clone();
+        temp = permutation.get(i);
+        permutation.set(i, permutation.get(j));
+        permutation.set(j, temp);
+        return new Solution(permutation);
     }
 
     public void printSolution(){

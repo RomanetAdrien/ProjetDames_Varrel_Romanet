@@ -1,31 +1,39 @@
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by adrie on 15/03/2017.
  */
 public class MeilleurVoisin {
 
-    int n= 4;
+    public static void solution(int taille, int distance){
+        int iterations = 0, essais = 0;
+        float best; Solution s; ArrayList<Solution> voisinage;
+        Date debut = new Date();
         do {
-        Solution s = new Solution(n);
-        float best = s.fitness;
-        int i = 0;
-        do {
-            ArrayList<Solution> voisinage = s.getVoisinage();
-
-            for (Solution ss : voisinage) {
-                if (ss.fitness <= best) {
-                    s = ss;
-                    best = ss.fitness;
+            // On prend une solution aléatoire
+            essais++;
+            s = new Solution(taille);
+            int coince = 0;
+            do {
+                voisinage = s.getVoisinage(distance);
+                // Si on trouve une meilleure solution ou une équivalente chez un voisin on la prend
+                for (Solution ss : voisinage) {
+                    if (ss.fitness <= s.fitness) {
+                        // Si la fitness est meilleure, on se rapproche du but donc on n'est pas coincé
+                        if (ss.fitness < s.fitness) {
+                            coince = 0;
+                        }
+                        s = ss;
+                    }
                 }
-            }
-            i++;
-        } while (i < 100 && best > 0);
-        if(best==0) {
-            System.out.println(n);
-            s.printSolution();
-            System.out.println("Itérations : " + i);
-            n++;
-        }
-    }while(n<100);
+                iterations++;
+                coince++;
+                // On répête temps qu'on n'a pas la solution et qu'on n'est pas coincé
+            } while (coince < 10 && s.fitness > 0);
+        } while (s.fitness != 0);
+        System.out.println("Solutions en "+iterations+" itérations, "+essais+" essais, "+
+                (new Date().getTime()- debut.getTime())+"ms");
+        s.printSolution();
+    }
 }

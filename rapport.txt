@@ -1,0 +1,14 @@
+Ensemble des solution = Position de la reine pour chacune des colonnes.
+Exemple : {0,1,2,3} correspond à la diagonale
+---X
+--X-
+-X--
+X---
+
+On part du principe qu'une solution ne peut pas avoir 2 reines sur la même ligne ou la même colonne.
+
+La fitness est le nombre de couple de reines en conflit. 
+Dans l'exemple ci dessous : f = 3 + 2 + 1 = 6
+
+On définit un voisinage en inversant la position de 2 reines.
+{0,1,2,3} a pour voisins {1,0,2,3}, {2,1,0,3}..... (n-1 + n-2 + ... + 1 voisins) = n(n-1) / 2
