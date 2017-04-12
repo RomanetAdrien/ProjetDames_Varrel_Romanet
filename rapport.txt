@@ -12,3 +12,8 @@ Dans l'exemple ci dessous : f = 3 + 2 + 1 = 6
 
 On définit un voisinage en inversant la position de 2 reines.
 {0,1,2,3} a pour voisins {1,0,2,3}, {2,1,0,3}..... (n-1 + n-2 + ... + 1 voisins) = n(n-1) / 2
+
+
+Recuit simulé : 
+On veut 4 chances sur 5 de choisir un nouveau voisin ajoutant n/2 conflits (df = n/2)
+TempIni = (-n/2)/ln(0.8)

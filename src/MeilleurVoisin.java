@@ -32,6 +32,7 @@ public class MeilleurVoisin {
                 // On répête temps qu'on n'a pas la solution et qu'on n'est pas coincé
             } while (coince < 10 && s.fitness > 0);
         } while (s.fitness != 0);
+        System.out.println("Meilleur voisin : n = "+taille);
         System.out.println("Solutions en "+iterations+" itérations, "+essais+" essais, "+
                 (new Date().getTime()- debut.getTime())+"ms");
         s.printSolution();
