@@ -7,8 +7,12 @@ public class ProjetDames_Varrel_Romanet {
 
 
     public static void main (String[] args){
-        MeilleurVoisin.solution(50, 0);
-        RecuitSimule.Solution(50,0);
+
+        Solution s = new Solution(200);
+        Tabou.solution(s,5);
+
+      //  MeilleurVoisin.solution(50, 0);
+       // RecuitSimule.Solution(50,0);
 
     }
 

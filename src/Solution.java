@@ -35,6 +35,22 @@ public class Solution {
         this.calculFitness();
     }
 
+    public int getN() {
+        return n;
+    }
+
+    public void setN(int n) {
+        this.n = n;
+    }
+
+    public float getFitness() {
+        return fitness;
+    }
+
+    public void setFitness(float fitness) {
+        this.fitness = fitness;
+    }
+
     public void calculFitness(){
         this.fitness=0;
         for(int i=0;i<this.n;i++){
