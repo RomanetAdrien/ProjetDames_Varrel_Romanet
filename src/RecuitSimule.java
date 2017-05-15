@@ -6,7 +6,7 @@ import static java.lang.Math.exp;
 
 public class RecuitSimule {
 
-    public static void Solution(int taille, int distance){
+    public static void solution(int taille, int distance){
 
         Solution x, y, best;
         x = best = new Solution(taille);
@@ -14,7 +14,7 @@ public class RecuitSimule {
         int iterations = 0;
         Random rand = new Random();
 
-        float df, temp = (float) ((taille/4) / 0.22314355), fTemp = (float) 0.99;
+        float df, temp = taille/2, fTemp = (float) 0.95;
         do{
             y = x.getVoisinRandom(distance);
             df = y.fitness - x.fitness;
@@ -27,19 +27,15 @@ public class RecuitSimule {
             else if (rand.nextDouble() <= exp((-df) / temp)){
                 x = y;
             }
-            if (iterations % 25 == 0){
+            if (iterations % (taille) == 0 && temp > 0.001){
                 temp = temp * fTemp;
             }
             iterations++;
         } while(best.fitness != 0 && iterations <taille * 1000);
 
         System.out.println("Recuit simulé : n = "+taille);
-        if (best.fitness == 0) {
-            System.out.println("Solutions en " + iterations + " itérations, " + (new Date().getTime() - debut.getTime()) + "ms");
-        }
-        else{
-            System.out.println("Pas de solutions en " + iterations + " itérations, " + (new Date().getTime() - debut.getTime()) + "ms");
-        }
+        System.out.println((best.fitness == 0?"Solution en ":"Pas de solution en ") +iterations+" itérations, "
+                +TempsExecution.getTime(new Date().getTime()- debut.getTime()));
         best.printSolution();
     }
 }

@@ -7,8 +7,8 @@ public class ProjetDames_Varrel_Romanet {
 
 
     public static void main (String[] args){
-        MeilleurVoisin.solution(50, 0);
-        RecuitSimule.Solution(50,0);
+        //MeilleurVoisin.solution(500, 0);
+        RecuitSimule.solution(500,0);
 
     }
 

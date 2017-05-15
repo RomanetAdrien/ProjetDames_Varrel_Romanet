@@ -33,8 +33,8 @@ public class MeilleurVoisin {
             } while (coince < 10 && s.fitness > 0);
         } while (s.fitness != 0);
         System.out.println("Meilleur voisin : n = "+taille);
-        System.out.println("Solutions en "+iterations+" itérations, "+essais+" essais, "+
-                (new Date().getTime()- debut.getTime())+"ms");
+        System.out.println("Solution en "+iterations+" itérations, "+essais+" essais, "+
+                TempsExecution.getTime(new Date().getTime()- debut.getTime()));
         s.printSolution();
     }
 }
