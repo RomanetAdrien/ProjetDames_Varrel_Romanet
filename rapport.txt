@@ -25,6 +25,10 @@ Recuit simulé :
 On veut 4 chances sur 5 de choisir un nouveau voisin ajoutant n/2 conflits (df = n/2)
 TempIni = (-n/2)/ln(0.8)
 
+Génétique :
+Reproduction : f = ( 1; 4; 5 )
+t = {1; 1.25; 1.45}
+
 
 Classes :
 Solution : Arraylist de la position des dames et fitness enregistrée

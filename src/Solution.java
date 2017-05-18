@@ -12,7 +12,7 @@ import static java.lang.Math.min;
 public class Solution {
     public ArrayList<Integer> solution;
     public int n;
-    public float fitness;
+    public int fitness;
 
     //Le voisinage correspond à toute les permutations de deux colonnes de cette solution
     //public ArrayList<Solution> voisinage;
@@ -43,11 +43,11 @@ public class Solution {
         this.n = n;
     }
 
-    public float getFitness() {
+    public int getFitness() {
         return fitness;
     }
 
-    public void setFitness(float fitness) {
+    public void setFitness(int fitness) {
         this.fitness = fitness;
     }
 

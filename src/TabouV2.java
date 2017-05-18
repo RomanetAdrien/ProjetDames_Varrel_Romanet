@@ -12,7 +12,7 @@ public class TabouV2 {
         int taille = init.getN();
         float fmin = init.getFitness();
         int i=0;
-        ArrayList<Integer> tabou = new ArrayList<>();
+        ArrayList<Integer> tabou = new ArrayList<Integer>();
         do{
             ArrayList<SolutionTabou> C = takeAway(actu.getVoisinageTabou(tailleVoisinage),tabou);
 
