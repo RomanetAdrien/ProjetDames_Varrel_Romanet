@@ -13,6 +13,7 @@ public class RecuitSimule {
         Date debut = new Date();
         int iterations = 0;
         Random rand = new Random();
+        final int iteMax = taille * 5000;
 
         float df, temp = taille/2, fTemp = (float) 0.95;
         do{
@@ -27,11 +28,11 @@ public class RecuitSimule {
             else if (rand.nextDouble() <= exp((-df) / temp)){
                 x = y;
             }
-            if (iterations % (taille) == 0 && temp > 0.001){
+            if (temp > 0.001 && iterations % (taille) == 0){
                 temp = temp * fTemp;
             }
             iterations++;
-        } while(best.fitness != 0 && iterations <taille * 1000);
+        } while(best.fitness != 0 && iterations < iteMax);
 
         System.out.println("Recuit simulé : n = "+taille);
         System.out.println((best.fitness == 0?"Solution en ":"Pas de solution en ") +iterations+" itérations, "

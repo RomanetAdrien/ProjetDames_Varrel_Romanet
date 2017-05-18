@@ -127,7 +127,7 @@ public class Solution {
             sgb.append(", ");
         }
         sgb.delete(sgb.length()-2, sgb.length());
-        sgb.append("}   F=" + this.fitness);
+        sgb.append("}\nF=" + this.fitness);
 
         System.out.println(sgb.toString());
     }

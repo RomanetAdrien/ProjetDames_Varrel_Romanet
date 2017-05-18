@@ -13,7 +13,26 @@ Dans l'exemple ci dessous : f = 3 + 2 + 1 = 6
 On définit un voisinage en inversant la position de 2 reines.
 {0,1,2,3} a pour voisins {1,0,2,3}, {2,1,0,3}..... (n-1 + n-2 + ... + 1 voisins) = n(n-1) / 2
 
+Autre voisinage, on inverse la position de 2 reines qui sont à moins de k de distance.
+Si k = 1, {0,1,2,3} a pour voisins {1,0,2,3}, {0,2,1,3}, {0,1,3,2} < k*n
+
+Ce voisinage permet d'améliorer les performances des algorithmes utilisant tous les voisins. Néanmoins, une solution
+optimale peut avoir que des voisins avec une fitness élevée, et inversement une solution avec une fitness de 1
+peut être assez éloigné d'une solution optimale, donc la permutation de 2 reines n'est pas un voisinage optimisé
+
 
 Recuit simulé : 
 On veut 4 chances sur 5 de choisir un nouveau voisin ajoutant n/2 conflits (df = n/2)
 TempIni = (-n/2)/ln(0.8)
+
+
+Classes :
+Solution : Arraylist de la position des dames et fitness enregistrée
+	Possibilité de préciser une taille de voisinage pour ne calculer que l'inversion de 2 reines proches
+	Possibilité d'avoir un voisin aléatoire (pour le recuit)
+SolutionTabou : Solution + un int contenant l'opération qui a conduit à cette solution 
+MeilleurVoisin : Algo nul qui prend le meilleur voisin, et recommence à partir d'une solution random si il ne trouv f=0
+RecuitSimule : Algo du recuit, fonctionne bien (voir température pour optimiser?)
+Tabou : Méthode Tabou, on met la solution dans la liste
+TabouV2 : Méthode Tabou, on met la permutation dans la liste (par exemple l'échange entre colonne 1 et 3)
+TempsExecution : Juste là pour convertir un long en heure minute seconde ms 
