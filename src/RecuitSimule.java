@@ -13,7 +13,7 @@ public class RecuitSimule {
         Date debut = new Date();
         int iterations = 0;
         Random rand = new Random();
-        final int iteMax = taille * 5000;
+        final int iteMax = taille * 10000;
 
         float df, temp = taille/2, fTemp = (float) 0.95;
         do{

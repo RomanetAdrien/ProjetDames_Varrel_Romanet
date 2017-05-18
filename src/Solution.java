@@ -121,13 +121,13 @@ public class Solution {
 
     public void printSolution(){
         StringBuilder sgb =new StringBuilder();
-        sgb.append("S={");
+        sgb.append("  S={");
         for (Integer i: this.solution) {
             sgb.append(Integer.toString(i));
             sgb.append(", ");
         }
         sgb.delete(sgb.length()-2, sgb.length());
-        sgb.append("}\nF=" + this.fitness);
+        sgb.append("}\n  F=" + this.fitness);
 
         System.out.println(sgb.toString());
     }
