@@ -7,6 +7,10 @@ public class SolutionTabou extends Solution {
         super(n);
     }
 
+    public SolutionTabou(Solution solution) {
+        super(solution.solution);
+    }
+
     public SolutionTabou(ArrayList<Integer> permutation, int operation) {
         super(permutation);
         this.operation = operation;

@@ -5,6 +5,7 @@ Exemple : {0,1,2,3} correspond à la diagonale
 -X--
 X---
 
+
 On part du principe qu'une solution ne peut pas avoir 2 reines sur la même ligne ou la même colonne.
 
 La fitness est le nombre de couple de reines en conflit. 

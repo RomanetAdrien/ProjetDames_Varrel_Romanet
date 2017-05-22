@@ -3,15 +3,20 @@ import java.util.Date;
 
 public class TabouV2 {
 
+    public static void solution(SolutionTabou init, int tailletabou){
+        solution(init,tailletabou, 0);
+    }
+
     //on donne une solution initiale plutot que de l'initialiser ici pour eventuellement faire des test avec différents
     // algorithmes pour la meme solution
-    public static Solution solution(SolutionTabou init, int tailletabou, int tailleVoisinage){
+    public static void solution(SolutionTabou init, int tailletabou, int tailleVoisinage){
         Date debut = new Date();
         SolutionTabou xmin = init;
         SolutionTabou actu = init;
         int taille = init.getN();
         float fmin = init.getFitness();
         int i=0;
+        final int iteMax = taille * 10;
         ArrayList<Integer> tabou = new ArrayList<Integer>();
         do{
             ArrayList<SolutionTabou> C = takeAway(actu.getVoisinageTabou(tailleVoisinage),tabou);
@@ -31,15 +36,16 @@ public class TabouV2 {
                 }
                 actu=y;
             }
-            //System.out.println("Iteration : " + i + "     " + "f : " + actu.fitness);
             i++;
-        }while (i < taille * 10 && fmin!=0);
+        }while (i < iteMax && fmin!=0);
 
+        /*
         System.out.println("Tabou : n = "+taille);
         System.out.println((xmin.fitness == 0?"Solution en ":"Pas de solution en ") +i+" itérations, "
                 +TempsExecution.getTime(new Date().getTime()- debut.getTime()));
         xmin.printSolution();
-        return xmin;
+        */
+        System.out.print(taille+";"+xmin.fitness+";"+i+";"+ (new Date().getTime()- debut.getTime())+";;");
     }
 
     private static ArrayList<SolutionTabou> takeAway(ArrayList<SolutionTabou> list, ArrayList<Integer> tabou){

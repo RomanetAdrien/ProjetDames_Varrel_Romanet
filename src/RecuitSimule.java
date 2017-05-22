@@ -6,12 +6,17 @@ import static java.lang.Math.exp;
 
 public class RecuitSimule {
 
-    public static void solution(int taille, int distance){
+    // Solution du recuit en prenant comme voisinage l'ensemble des permutations (1+2+...+n voisins)
+    public static void solution(Solution init){
+        solution(init, 0);
+    }
 
+    // Solution du recuit en prenant comme voisinage les permutations des reines proches (moins de distance * n voisins)
+    public static void solution(Solution init, int distance){
         Solution x, y, best;
-        x = best = new Solution(taille);
+        x = best = init;
         Date debut = new Date();
-        int iterations = 0;
+        int iterations = 0, taille = init.n;
         Random rand = new Random();
         final int iteMax = taille * 10000;
 
@@ -20,7 +25,7 @@ public class RecuitSimule {
             y = x.getVoisinRandom(distance);
             df = y.fitness - x.fitness;
             if (df <= 0) {
-                 x = y;
+                x = y;
                 if (x.fitness < best.fitness){
                     best = x;
                 }
@@ -34,9 +39,13 @@ public class RecuitSimule {
             iterations++;
         } while(best.fitness != 0 && iterations < iteMax);
 
+        /*
         System.out.println("Recuit simulé : n = "+taille);
         System.out.println((best.fitness == 0?"Solution en ":"Pas de solution en ") +iterations+" itérations, "
                 +TempsExecution.getTime(new Date().getTime()- debut.getTime()));
         best.printSolution();
+        */
+        System.out.print(taille+";"+best.fitness+";"+iterations+";"+ (new Date().getTime()- debut.getTime())+";;");
     }
+
 }
