@@ -6,9 +6,6 @@ import static java.lang.Math.abs;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
-/**
- * Created by ROMANET_VARREL on 15/03/2017.
- */
 public class Solution {
     public ArrayList<Integer> solution;
     public int n;
@@ -127,7 +124,7 @@ public class Solution {
             sgb.append(", ");
         }
         sgb.delete(sgb.length()-2, sgb.length());
-        sgb.append("}\n  F=" + this.fitness);
+        sgb.append("}\n  F=" + this.fitness+"\n");
 
         System.out.println(sgb.toString());
     }

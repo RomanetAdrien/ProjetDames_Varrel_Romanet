@@ -1,14 +1,11 @@
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * Created by adrie on 15/03/2017.
- */
 public class MeilleurVoisin {
 
     public static void solution(int taille, int distance){
         int iterations = 0, essais = 0;
-        float best; Solution s; ArrayList<Solution> voisinage;
+        Solution s; ArrayList<Solution> voisinage;
         Date debut = new Date();
         do {
             // On prend une solution aléatoire

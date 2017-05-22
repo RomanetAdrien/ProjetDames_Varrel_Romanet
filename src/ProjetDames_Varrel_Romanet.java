@@ -1,17 +1,21 @@
-/**
- * Created by adrie on 15/03/2017.
- */
+
 public class ProjetDames_Varrel_Romanet {
 
 
     public static void main (String[] args){
+        int taille = 50;
+        // Pour que les algos du Recuit et Tabou démarrent avec la même solution initiale
+        Solution init = new Solution(taille);
 
-        MeilleurVoisin.solution(50, 0);
-        SolutionTabou s = new SolutionTabou(50);
+        // Taille du plateau, distance voisinage
+        MeilleurVoisin.solution(taille, 0);
+
         // Solution initiale, taille liste tabou, distance voisinage
-        Tabou.solution(s,5, 0);
+        Tabou.solution(new SolutionTabou(init),5, 0);
+
         // Taille des solutions, distance voisinage
-        RecuitSimule.solution(s,0);
+        RecuitSimule.solution(init,0);
+
         // Taille des solutions, taille population, % de mutation de chacune des solutions
         Genetique.solution(50,25,10);
 

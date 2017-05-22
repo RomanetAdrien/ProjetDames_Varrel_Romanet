@@ -1,15 +1,9 @@
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
 import static java.lang.Math.exp;
 
 public class RecuitSimule {
-
-    // Solution du recuit en prenant comme voisinage l'ensemble des permutations (1+2+...+n voisins)
-    public static void solution(Solution init){
-        solution(init, 0);
-    }
 
     // Solution du recuit en prenant comme voisinage les permutations des reines proches (moins de distance * n voisins)
     public static void solution(Solution init, int distance){
@@ -20,7 +14,7 @@ public class RecuitSimule {
         Random rand = new Random();
         final int iteMax = taille * 10000;
 
-        float df, temp = taille/2, fTemp = (float) 0.95;
+        float df, temp = 5*taille, fTemp = (float) 0.9;
         do{
             y = x.getVoisinRandom(distance);
             df = y.fitness - x.fitness;
@@ -33,7 +27,7 @@ public class RecuitSimule {
             else if (rand.nextDouble() <= exp((-df) / temp)){
                 x = y;
             }
-            if (temp > 0.001 && iterations % (taille) == 0){
+            if (temp > 0.19 && iterations % (taille) == 0){
                 temp = temp * fTemp;
             }
             iterations++;
