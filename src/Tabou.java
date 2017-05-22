@@ -15,6 +15,7 @@ public class Tabou {
         SolutionTabou actu = init;
         int taille = init.getN();
         float fmin = init.getFitness();
+        boolean actionPossible = true;
         int i=0;
         final int iteMax = taille * 10;
         ArrayList<Integer> tabou = new ArrayList<Integer>();
@@ -36,8 +37,12 @@ public class Tabou {
                 }
                 actu=y;
             }
+            else {
+                // La liste tabou contient toutes les opérations possibles, l'algorithme ne peut pas aller plus loin
+                actionPossible = false;
+            }
             i++;
-        }while (i < iteMax && fmin!=0);
+        }while (i < iteMax && fmin!=0 && actionPossible);
 
 
         System.out.println("Tabou : n = "+taille);
