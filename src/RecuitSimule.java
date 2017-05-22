@@ -39,13 +39,12 @@ public class RecuitSimule {
             iterations++;
         } while(best.fitness != 0 && iterations < iteMax);
 
-        /*
+
         System.out.println("Recuit simulé : n = "+taille);
         System.out.println((best.fitness == 0?"Solution en ":"Pas de solution en ") +iterations+" itérations, "
                 +TempsExecution.getTime(new Date().getTime()- debut.getTime()));
         best.printSolution();
-        */
-        System.out.print(taille+";"+best.fitness+";"+iterations+";"+ (new Date().getTime()- debut.getTime())+";;");
+
     }
 
 }
